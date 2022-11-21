@@ -119,7 +119,7 @@ def notebook_launcher(function, args=(), num_processes=None, use_fp16=False, mix
                 launcher = PrepareForLaunch(function, distributed_type="MULTI_GPU")
 
                 print(f"Launching training on {num_processes} GPUs.")
-                start_processes(launcher, args=args, nprocs=num_processes, start_method="fork")
+                start_processes(launcher, args=args, nprocs=num_processes, start_method="spawn")
 
         else:
             # No need for a distributed launch otherwise as it's either CPU, GPU or MPS.
